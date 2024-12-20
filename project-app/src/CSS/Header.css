@@ -1,0 +1,32 @@
+/* Header.css */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(
+    to right,
+    #6a11cb,
+    #2575fc
+  ); /* Gradient background */
+  padding: 15px 0; /* Increased padding */
+  text-align: center;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  font-family: "Arial", sans-serif; /* Modern font */
+}
+
+header h1 {
+  color: white; /* White text color */
+  font-size: 36px; /* Larger font size */
+  margin: 0; /* Remove default margin */
+  letter-spacing: 1px; /* Spacing between letters for a clean look */
+  text-transform: uppercase; /* Make the text uppercase */
+  font-weight: bold; /* Make the text bold */
+}
+
+header p {
+  color: #f1f1f1; /* Slightly off-white color */
+  font-size: 18px; /* Medium-sized text */
+  margin-top: 5px; /* Add a little space above */
+}

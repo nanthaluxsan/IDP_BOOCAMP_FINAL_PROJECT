@@ -1,0 +1,18 @@
+/* CustomCircularGauge.css */
+.containers {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%; /* Full width of the parent container */
+  padding: 20px; /* Add some padding */
+}
+
+.gauge-container {
+  flex: 1; /* Each gauge container takes an equal portion of space */
+  max-width: 400px; /* Optional: Limit the maximum width of each gauge */
+  text-align: center; /* Center-align the content */
+  padding: 10px; /* Add some padding */
+  border: 2px solid #ddd; /* Optional: Add a border for visualization */
+  border-radius: 10px; /* Optional: Make the edges rounded */
+  background-color: transparent; /* Set background to transparent */
+}

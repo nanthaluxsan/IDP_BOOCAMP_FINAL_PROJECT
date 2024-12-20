@@ -1,0 +1,15 @@
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: lightgrey;
+  padding: 10px;
+  text-align: center;
+  z-index: 1000;
+
+  display: flex;
+  justify-content: center; /* Centers the content horizontally */
+  align-items: center; /* Centers the content vertically */
+  flex-grow: 1; /* Allows the footer to grow and fill available space */
+}
