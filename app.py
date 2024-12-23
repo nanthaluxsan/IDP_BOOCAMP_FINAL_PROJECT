@@ -4,11 +4,13 @@ import os
 from PIL import Image
 import ocr_extraction
 import toxigen_hate_bert
+import logging
+import LSTM_model
 
 app = Flask(__name__)
 CORS(app)
 
-
+logging.basicConfig(level=logging.WARNING)
 app.config["UPLOAD_FOLDER"] = "uploads"
 if not os.path.exists(app.config["UPLOAD_FOLDER"]):
     os.makedirs(app.config["UPLOAD_FOLDER"])
@@ -24,6 +26,12 @@ def upload_image():
         return jsonify({"error": "No selected file"}), 400
 
     if image:
+        # Remove old files in the uploads folder before saving the new image
+        for filename in os.listdir(app.config["UPLOAD_FOLDER"]):
+            file_path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
+            if os.path.isfile(file_path):
+                os.remove(file_path)
+
         image_path = os.path.join(app.config["UPLOAD_FOLDER"], image.filename)
         image.save(image_path)
 
@@ -33,10 +41,9 @@ def upload_image():
 
 
 def process_image(folder_path):
-    texts = ocr_extraction.extract_text_from_images(folder_path)
 
     try:
-        total_outputs = toxigen_hate_bert.hateful_detect(texts)
+        total_outputs = LSTM_model.predict_hateful_content_from_folder(folder_path)
     except Exception as e:
         return jsonify({"error": f"Hate speech detection failed: {str(e)}"}), 500
 
